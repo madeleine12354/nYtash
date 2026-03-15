@@ -1,4 +1,4 @@
-name: Run every 2 hours  # нютин акк
+name: Auto Run Script Every 2 Hours
 
 on:
   schedule:
@@ -22,7 +22,7 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: |
-          if [ -f akk-N-main/maddd-main/requirements.txt ]; then pip install -r akk-N-main/maddd-main/requirements.txt; else pip install requests loguru python-dotenv; fi
+          if [ -f main-acc-main/akk-N-main/maddd-main/requirements.txt ]; then pip install -r main-acc-main/akk-N-main/maddd-main/requirements.txt; else pip install requests loguru python-dotenv; fi
       - name: Ensure secrets
         run: |
           if [ -z "$MAIN_TOKEN" ] || [ -z "$BOT_TOKEN" ]; then echo "Missing MAIN_TOKEN or BOT_TOKEN" >&2; exit 1; fi
@@ -32,6 +32,6 @@ jobs:
           ls -la
           echo "Top-level dirs:"
           find . -maxdepth 2 -type d -print
-      - name: Run script (explicit path)
+      - name: Run script
         run: |
-          if [ -f akk-N-main/maddd-main/FarmWinsAlmaz-durakonline-main/main.py ]; then python akk-N-main/maddd-main/FarmWinsAlmaz-durakonline-main/main.py; else echo "File not found: akk-N-main/maddd-main/FarmWinsAlmaz-durakonline-main/main.py" >&2; ls -la akk-N-main/maddd-main/FarmWinsAlmaz-durakonline-main/; exit 1; fi
+          python main-acc-main/akk-N-main/maddd-main/FarmWinsAlmaz-durakonline-main/main.py
